@@ -26,6 +26,7 @@ const Family = ({userOrgs, selectedOrg, setSelectedOrg}: { userOrgs: Org[], sele
                 </div>
                 <hr />
             </div>}
+            <p className="notice">Fonctionnalité à venir.</p>
         </div>
     </div>
 }

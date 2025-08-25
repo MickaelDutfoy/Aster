@@ -36,7 +36,8 @@ const Dashboard = ({ setAuth, userOrgs, name }: { setAuth: (auth: boolean) => vo
                     <figcaption className="legend">Associations</figcaption>
                 </figure>
             </div>
-            {userOrgs.length === 0 && <p className="no-orga">Vous devez d'abord ajouter une association ou en rejoindre une.</p>}
+            {userOrgs.length === 0 && <p className="notice">Vous devez d'abord ajouter une association ou en rejoindre une.</p>}
+            <p className="notice">Un problème ? Une suggestion ? <a href="mailto:m.dutfoy@gmail.com">Envoyez-moi un message</a> !</p>
         </div>
     </div>
 }

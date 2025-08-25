@@ -26,6 +26,7 @@ const Map = ({userOrgs, selectedOrg, setSelectedOrg}: { userOrgs: Org[], selecte
                 </div>
                 <hr />
             </div>}
+            <p className="notice">Fonctionnalité à venir.</p>
         </div>
     </div>
 }
