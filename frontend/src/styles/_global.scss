@@ -1,12 +1,24 @@
 @use "vars";
 
-* {
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-h1, h2, h3, button {
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+button {
     font-family: 'Comfortaa', sans-serif;
 }
 
@@ -97,7 +109,9 @@ a {
     font-size: 1.1rem;
 }
 
-.field, select, textarea {
+.field,
+select,
+textarea {
     font-family: 'Nunito', sans-serif;
     background-color: vars.$snow;
     border: 1px solid vars.$outer-space;
@@ -108,7 +122,7 @@ a {
 
 textarea {
     resize: vertical;
-    overflow: auto;  
+    overflow: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,7 +130,9 @@ textarea {
         accent-color: vars.$raw-umber;
     }
 
-    .field, select, textarea {
+    .field,
+    select,
+    textarea {
         background-color: vars.$isabelline;
         color: vars.$smoky-black;
     }
