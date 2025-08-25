@@ -11,9 +11,11 @@ import Families from "./components/Families";
 import Map from "./components/Map";
 import Organizations from "./components/Organizations";
 import AnimalDetail from "./components/AnimalDetail";
+import { api } from "./api";
 import type { Org, PendingMember } from "./types";
 
 const App = () => {
+  
   const navigate = useNavigate();
 
   const [name, setName] = useState("invité");
@@ -52,7 +54,7 @@ const App = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("http://localhost:3001/api/member-organization", {
+        const res = await fetch(api("/api/member-organization"), {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

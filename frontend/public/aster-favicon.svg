@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="256.0" cy="256.0" r="235.52" fill="#228BE6" fill-opacity="0.9"/>
+    <!-- House -->
+    <polygon points="138.24,230.39999999999998 256.0,117.75999999999998 373.76,230.39999999999998" fill="#fff"/>
+    <rect x="138.24" y="230.39999999999998" width="235.52" height="153.6" fill="#fff"/>
+    <rect x="230.0928" y="291.84000000000003" width="51.8144" height="92.16" rx="10.36288" ry="10.36288" fill="#228BE6"/>
+    <!-- Paw -->
+    <circle cx="220.16" cy="168.95999999999998" r="17.92" fill="#fff"/>
+    <circle cx="291.84000000000003" cy="168.95999999999998" r="17.92" fill="#fff"/>
+    <circle cx="202.24" cy="204.79999999999998" r="17.92" fill="#fff"/>
+    <circle cx="309.76" cy="204.79999999999998" r="17.92" fill="#fff"/>
+    <ellipse cx="256.0" cy="204.79999999999998" rx="40.96" ry="30.72" fill="#fff"/>
+  </g>
+</svg>

@@ -2,8 +2,10 @@ import "../styles/Register.scss";
 import { useState } from "react";
 import type { MemberForm } from "../types";
 import { showToast } from "../utils/toast";
+import { api } from "../api";
 
 const Register = ({setAuth, setName}: {setAuth: (auth: boolean) => void, setName: (name: string) => void}) => {
+
     const [regForm, setRegForm]: [MemberForm, (form: MemberForm) => void] = useState<MemberForm>({
         first_name: "",
         last_name: "",
@@ -25,7 +27,7 @@ const Register = ({setAuth, setName}: {setAuth: (auth: boolean) => void, setName
         }
 
         try {
-            const res = await fetch("http://localhost:3001/api/members", {
+            const res = await fetch(api("/api/members"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(regForm),

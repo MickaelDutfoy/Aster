@@ -3,8 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { LogForm } from "../types";
 import { showToast } from "../utils/toast";
+import { api } from "../api";
 
 const Auth = ({setAuth, setName}: {setAuth: (auth: boolean) => void, setName: (name: string) => void}) => {
+  
+  const navigate = useNavigate();
+
   const [logForm, setLogForm]: [LogForm, (form: LogForm) => void] = useState<LogForm>({
     email: "",
     password: "",
@@ -18,7 +22,7 @@ const Auth = ({setAuth, setName}: {setAuth: (auth: boolean) => void, setName: (n
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3001/api/sessions", {
+      const res = await fetch(api("/api/sessions"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(logForm),
@@ -46,8 +50,6 @@ const Auth = ({setAuth, setName}: {setAuth: (auth: boolean) => void, setName: (n
       console.error(err);
     }
   }
-
-  const navigate = useNavigate();
 
   return <div className="login page">
     <h2>Pas encore membre ?</h2>

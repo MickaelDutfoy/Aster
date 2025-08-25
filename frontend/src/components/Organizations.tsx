@@ -2,9 +2,11 @@ import "../styles/Organizations.scss"
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utils/toast";
+import { api } from "../api";
 import type { Org, PendingMember } from "../types";
 
 const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs, setPendingRequests, setPendingMembers }: { userOrgs: Org[], pendingRequests: Org[], pendingMembers: PendingMember[], setUserOrgs: (userOrgs: Org[]) => void, setPendingRequests: (userOrgs: Org[]) => void, setPendingMembers: (userOrgs: PendingMember[]) => void }) => {
+
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
@@ -28,7 +30,7 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
 
         const fetchResults = async () => {
             try {
-                const res = await fetch(`http://localhost:3001/api/organizations?q=${encodeURIComponent(searchTerm)}`, {
+                const res = await fetch(api(`/api/organizations?q=${encodeURIComponent(searchTerm)}`), {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -52,7 +54,7 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch("http://localhost:3001/api/organizations", {
+            const res = await fetch(api("/api/organizations"), {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -92,7 +94,7 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch("http://localhost:3001/api/member-organization", {
+            const res = await fetch(api("/api/member-organization"), {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -130,7 +132,7 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch(`http://localhost:3001/api/member-organization/${orgId}/members/${memberId}`, {
+            const res = await fetch(api(`/api/member-organization/${orgId}/members/${memberId}`), {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

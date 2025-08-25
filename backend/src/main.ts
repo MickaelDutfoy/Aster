@@ -6,6 +6,7 @@ import membersRoutes from './routes/members';
 import organizationsRoutes from './routes/organizations';
 import memberOrganizationRoutes from './routes/member_organization';
 import animalsRoutes from './routes/animals';
+import path from "path";
 
 dotenv.config();
 
@@ -21,8 +22,17 @@ app.use('/api', organizationsRoutes);
 app.use('/api', memberOrganizationRoutes);
 app.use('/api', animalsRoutes);
 
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.send('Aster API is running 🐾');
+});
+
+// Static frontend
+const publicDir = path.join(__dirname, "public");
+app.use(express.static(publicDir));
+
+// SPA fallback
+app.get(/^\/(?!api).*/, (_req, res) => {
+  res.sendFile(path.join(publicDir, "index.html"));
 });
 
 app.listen(PORT, () => {

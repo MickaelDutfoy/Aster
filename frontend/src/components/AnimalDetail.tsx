@@ -2,6 +2,7 @@ import "../styles/AnimalDetail.scss"
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { showToast } from "../utils/toast";
+import { api } from "../api";
 import type { AnimalListItem } from "../types";
 
 const AnimalDetail = () => {
@@ -103,7 +104,7 @@ const AnimalDetail = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch(`http://localhost:3001/api/animals/${id}`, {
+            const res = await fetch(api(`/api/animals/${id}`), {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -138,6 +139,7 @@ const AnimalDetail = () => {
                 <h3>{animal.name}</h3>
                 <p>{animal.species} {animal.color.toLowerCase()} {animal.sex === "M" ? "Mâle" : "Femelle"} de {getAge(animal.birth_date)}.</p>
                 <p>Né{animal.sex === "F" ? "e" : ""} le {formatDate(animal.birth_date)}.</p>
+                <p>{animal.is_neutered ? "Stérilisé(e)." : ""}</p>
                 <p>Dernier vaccin : {animal.last_vax ? formatDate(animal.last_vax) : "aucun"}{animal.is_primo_vax ? " (primo)" : ""}{warningVax(animal)}.</p>
                 <p>Dernier déparasitage : {animal.last_deworm ? formatDate(animal.last_deworm) : "aucun"}{animal.is_first_deworm ? " (premier)" : ""}{warningDeworm(animal)}.</p>
                 <p>{animal.information ? "Notes : " + animal.information : ""}</p>
@@ -199,8 +201,8 @@ const AnimalDetail = () => {
                             className="box"
                             type="checkbox"
                             name="is_neutered"
-                            defaultChecked={animalForm.neutered}
-                            onChange={(e) => animalForm.neutered = e.target.checked}
+                            checked={animalForm.neutered}
+                            onChange={(e) => setAnimalForm(f => ({ ...f, is_neutered: e.target.checked }))}
                         />
                     </div>
                     <div className="animal-vax">

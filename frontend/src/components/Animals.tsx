@@ -3,6 +3,7 @@ import type { AnimalListItem, Org } from "../types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { showToast } from "../utils/toast";
+import { api } from "../api";
 
 const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], selectedOrg: number | null, setSelectedOrg: (userOrgs: number | null) => void }) => {
 
@@ -35,7 +36,7 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
             const token = localStorage.getItem("token");
 
             try {
-                const res = await fetch(`http://localhost:3001/api/animals?orgId=${selectedOrg}`, {
+                const res = await fetch(api(`/api/animals?orgId=${selectedOrg}`), {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -133,7 +134,7 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch("http://localhost:3001/api/animals", {
+            const res = await fetch(api("/api/animals"), {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -151,6 +152,22 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
 
             setRefreshAnimals(prev => prev + 1);
             showToast("Animal ajouté avec succès");
+            setAnimalForm({
+                name: "",
+                species: "",
+                sex: "",
+                color: "",
+                birthYear: 0,
+                birthMonth: 0,
+                birthDay: 0,
+                is_neutered: false,
+                vax: "",
+                primo: false,
+                deworm: "",
+                prime: false,
+                notes: "",
+            })
+
         } catch (error) {
             console.error(error);
         }
@@ -236,8 +253,8 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
                             className="box"
                             type="checkbox"
                             name="is_neutered"
-                            defaultChecked={animalForm.is_neutered}
-                            onChange={(e) => setAnimalForm(f => ({ ...f, neutered: e.target.checked }))}
+                            checked={animalForm.is_neutered}
+                            onChange={(e) => setAnimalForm(f => ({ ...f, is_neutered: e.target.checked }))}
                         />
                     </div>
                     <div className="animal-vax">
