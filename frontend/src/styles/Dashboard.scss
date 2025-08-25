@@ -1,0 +1,82 @@
+@use "vars";
+@use "global";
+
+.overlay {
+    h3 {
+        font-size: 1.1rem;
+        padding: 15px 0;
+    }
+
+    .backlink {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    hr {
+        color: vars.$cinereous;
+        margin: 5px 0;
+    }
+
+    header {
+        min-height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .dash-panel {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: space-evenly;
+        margin: 20px;
+    }
+
+    .icon {
+        cursor: pointer;
+        color: vars.$smoky-black;
+    }
+
+    .legend {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .no-orga {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .orga-select {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .overlay {
+        .icon {
+            color: vars.$isabelline;
+        }
+    }
+
+    hr {
+        color: vars.$raw-umber;
+    }
+}

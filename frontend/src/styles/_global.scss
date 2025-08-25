@@ -1,0 +1,140 @@
+@use "vars";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, button {
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.space-20 {
+    margin: 20px;
+}
+
+#toast-container {
+    position: fixed;
+    top: 25px;
+    right: 20px;
+    width: calc(100% - 40px);
+    z-index: 100;
+
+    .toast {
+        background-color: vars.$smoky-black;
+        color: vars.$isabelline;
+        padding: 12px 20px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
+    }
+
+    .toast.hide {
+        opacity: 0;
+    }
+}
+
+.main-button {
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    background-color: vars.$cinereous;
+    box-shadow: 2px 2px 4px vars.$outer-space;
+    padding: 15px;
+    border: 2px solid vars.$raw-umber;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+.little-button {
+    cursor: pointer;
+    background-color: vars.$cinereous;
+    color: vars.$smoky-black;
+    box-shadow: 1px 1px 4px vars.$smoky-black;
+    padding: 7px;
+    border: 1px solid vars.$raw-umber;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.box {
+    transform: scale(1.4);
+    accent-color: vars.$cinereous;
+}
+
+a {
+    text-decoration: none;
+    color: vars.$outer-space;
+}
+
+.page {
+    height: 100vh;
+    padding: 30px;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
+        url('../../img/aster.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 1.5rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 2vh;
+    left: 2vw;
+    width: 96vw;
+    height: 96vh;
+    padding: 10px;
+    background-color: vars.$isabelline;
+    color: vars.$smoky-black;
+    border: 3px solid vars.$cinereous;
+    border-radius: 10px;
+    z-index: 2;
+    font-size: 1.1rem;
+}
+
+.field, select, textarea {
+    font-family: 'Nunito', sans-serif;
+    background-color: vars.$snow;
+    border: 1px solid vars.$outer-space;
+    color: vars.$outer-space;
+    font-size: 0.9rem;
+    padding: 5px;
+}
+
+textarea {
+    resize: vertical;
+    overflow: auto;  
+}
+
+@media (prefers-color-scheme: dark) {
+    .box {
+        accent-color: vars.$raw-umber;
+    }
+
+    .field, select, textarea {
+        background-color: vars.$isabelline;
+        color: vars.$smoky-black;
+    }
+
+    .little-button {
+        background-color: vars.$raw-umber;
+        color: vars.$smoky-black;
+        box-shadow: 1px 1px 4px vars.$smoky-black;
+        border: 1px solid vars.$smoky-black;
+    }
+
+    a {
+        color: vars.$cinereous;
+    }
+
+    .overlay {
+        background-color: vars.$outer-space;
+        color: vars.$isabelline;
+        border: 3px solid vars.$smoky-black;
+    }
+}

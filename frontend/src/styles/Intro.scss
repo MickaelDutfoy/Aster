@@ -1,0 +1,32 @@
+@use "vars";
+@use "global";
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  div {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  h2 {
+    color: vars.$smoky-black;
+    font-weight: 900;
+    padding: 20px;
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-weight: 500;
+    padding: 5px;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+}

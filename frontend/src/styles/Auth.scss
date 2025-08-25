@@ -1,0 +1,22 @@
+@use "vars";
+@use "global";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    form {
+        margin: 10px;
+    }
+
+    .auth-field {
+        background-color: vars.$isabelline;
+        border: 1px solid vars.$outer-space;
+        border-radius: 5px;
+        box-shadow: 1px 1px 4px vars.$smoky-black;
+        padding: 10px;
+        margin: 5px;
+    }
+}

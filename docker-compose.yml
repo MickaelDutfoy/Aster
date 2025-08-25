@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: aster
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: asterdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db-init/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+  backend:
+    build: ./backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://aster:secret@postgres:5432/asterdb
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    command: npm run dev
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:
