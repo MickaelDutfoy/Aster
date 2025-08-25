@@ -30,6 +30,11 @@ app.get('/api/health', (req, res) => {
 const publicDir = path.join(__dirname, "public");
 app.use(express.static(publicDir));
 
+app.get("/manifest.webmanifest", (_req, res) => {
+  res.setHeader("Content-Type", "application/manifest+json");
+  res.sendFile(path.join(publicDir, "manifest.webmanifest"));
+});
+
 // SPA fallback
 app.get(/^\/(?!api).*/, (_req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
