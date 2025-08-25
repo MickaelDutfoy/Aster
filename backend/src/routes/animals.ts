@@ -56,7 +56,7 @@ router.post("/animals", authenticateToken, async (req: AuthRequest, res) => {
         return;
     }
 
-    let { name, species, sex, color, birthYear, birthMonth, birthDay, neutered, vax, primo, deworm, prime, notes, orgId } = req.body;
+    let { name, species, sex, color, birthYear, birthMonth, birthDay, is_neutered, vax, primo, deworm, prime, notes, orgId } = req.body;
 
     if (sex === "") sex = null;
     if (birthDay === 0) birthDay = 15;
@@ -87,7 +87,7 @@ router.post("/animals", authenticateToken, async (req: AuthRequest, res) => {
             INSERT INTO animals (name, species, sex, color, birth_date, is_neutered, last_vax, is_primo_vax, last_deworm, is_first_deworm, information, organization_id)
             VALUES ($1, $2, $3, $4, $5, $6, NULLIF($7, '')::date, $8, NULLIF($9, '')::date, $10, $11, $12)
             RETURNING id
-        `, [name, species, sex, color, birthDate, neutered, vax, primo, deworm, prime, notes, orgId])
+        `, [name, species, sex, color, birthDate, is_neutered, vax, primo, deworm, prime, notes, orgId])
 
         const animalId = post.rows[0].id
 
@@ -122,7 +122,7 @@ router.patch("/animals/:id", authenticateToken, async (req: AuthRequest, res) =>
         return;
     }
 
-    let { name, species, sex, color, birthYear, birthMonth, birthDay, neutered, vax, primo, deworm, prime, notes } = req.body;
+    let { name, species, sex, color, birthYear, birthMonth, birthDay, is_neutered, vax, primo, deworm, prime, notes } = req.body;
 
     if (sex === "") sex = null;
     if (birthDay === 0) birthDay = 15;
@@ -150,7 +150,7 @@ router.patch("/animals/:id", authenticateToken, async (req: AuthRequest, res) =>
                 information = $11
             WHERE id = $12
             RETURNING *;
-        `, [name, species, sex, color, birthDate, neutered, vax, primo, deworm, prime, notes, id])
+        `, [name, species, sex, color, birthDate, is_neutered, vax, primo, deworm, prime, notes, id])
 
         res.status(201).json(patch.rows[0]);
     } catch (error) {

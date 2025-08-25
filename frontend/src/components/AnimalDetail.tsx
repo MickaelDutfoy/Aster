@@ -21,7 +21,7 @@ const AnimalDetail = () => {
         birthYear: animal?.birth_date ? Number(animal.birth_date.slice(0, 4)) : undefined,
         birthMonth: animal?.birth_date ? Number(animal.birth_date.slice(5, 7)) : undefined,
         birthDay: animal?.birth_date ? Number(animal.birth_date.slice(8, 10)) : undefined,
-        neutered: animal?.is_neutered,
+        is_neutered: animal?.is_neutered,
         vax: animal?.last_vax,
         primo: animal?.is_primo_vax,
         deworm: animal?.last_deworm,
@@ -196,12 +196,11 @@ const AnimalDetail = () => {
                     </div>
                     <div className="animal-neutered">
                         <p className="field-title">Stérilisé(e) ?</p>
-                        <p>{animalForm.neutered}</p>
                         <input
                             className="box"
                             type="checkbox"
                             name="is_neutered"
-                            checked={animalForm.neutered}
+                            checked={animalForm.is_neutered}
                             onChange={(e) => setAnimalForm(f => ({ ...f, is_neutered: e.target.checked }))}
                         />
                     </div>
