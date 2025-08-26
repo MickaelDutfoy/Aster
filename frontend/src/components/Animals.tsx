@@ -192,7 +192,7 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
                 <h3>Vos animaux :</h3>
                 <ul className="animal-list">
                     {animalList.map(a => {
-                        return <li key={a.id}><Link to={`/animals/${a.id}`} state={{ animal: a }}>{a.name} — {a.species} — {a.sex}{a.sex ? " —" : ""} {getAge(a.birth_date)} {warning(a)}</Link></li>
+                        return <li key={a.id}><Link to={`/animals/${a.id}`} state={{ animal: a }}>{a.name} — {a.species} {a.sex} de {getAge(a.birth_date)} {warning(a)}</Link></li>
                     })}
                 </ul>
                 <p className="note">(Les animaux marqués d'un ⚠️ ont un rappel de vaccin ou un déparasitage à refaire)</p>
