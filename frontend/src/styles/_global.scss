@@ -9,7 +9,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 14px;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -83,7 +83,7 @@ a {
 }
 
 .page {
-    height: 100vh;
+    min-height: 100vh;
     padding: 30px;
     background-image:
         linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
@@ -97,16 +97,16 @@ a {
 .overlay {
     position: fixed;
     top: 2vh;
+    right: 2vw;
+    bottom: 2vh;
     left: 2vw;
-    width: 96vw;
-    height: 96vh;
     padding: 10px;
     background-color: vars.$isabelline;
     color: vars.$smoky-black;
     border: 3px solid vars.$cinereous;
     border-radius: 10px;
     z-index: 2;
-    font-size: 1.1rem;
+    overflow-y: auto;
 }
 
 .field,
