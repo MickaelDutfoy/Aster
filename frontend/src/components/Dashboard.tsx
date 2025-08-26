@@ -20,19 +20,19 @@ const Dashboard = ({ setAuth, userOrgs, name }: { setAuth: (auth: boolean) => vo
             <hr />
             <div className="dash-panel">
                 <figure className={userOrgs.length === 0 ? "disabled" : ""}>
-                    <PawPrint className="icon" size={80} strokeWidth={1.5} onClick={() => navigate("/animals")} />
+                    <PawPrint className="icon" size={70} strokeWidth={1.5} onClick={() => navigate("/animals")} />
                     <figcaption className="legend">Animaux</figcaption>
                 </figure>
                 <figure className={userOrgs.length === 0 ? "disabled" : ""}>
-                    <Home className="icon" size={80} strokeWidth={1.5} onClick={() => navigate("/families")} />
+                    <Home className="icon" size={70} strokeWidth={1.5} onClick={() => navigate("/families")} />
                     <figcaption className="legend">Familles</figcaption>
                 </figure>
                 <figure className={userOrgs.length === 0 ? "disabled" : ""}>
-                    <Map className="icon" size={80} strokeWidth={1.5} onClick={() => navigate("/map")} />
+                    <Map className="icon" size={70} strokeWidth={1.5} onClick={() => navigate("/map")} />
                     <figcaption className="legend">Carte</figcaption>
                 </figure>
                 <figure>
-                    <Folder className="icon" size={80} strokeWidth={1.5} onClick={() => navigate("/organizations")} />
+                    <Folder className="icon" size={70} strokeWidth={1.5} onClick={() => navigate("/organizations")} />
                     <figcaption className="legend">Associations</figcaption>
                 </figure>
             </div>

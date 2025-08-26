@@ -114,7 +114,7 @@ const App = () => {
           <Route path="/animals/:id" element={<AnimalDetail />} />
           <Route path="/families" element={<Families userOrgs={userOrgs} selectedOrg={selectedOrg} setSelectedOrg={setSelectedOrg} />} />
           <Route path="/map" element={<Map userOrgs={userOrgs} selectedOrg={selectedOrg} setSelectedOrg={setSelectedOrg} />} />
-          <Route path="/organizations" element={<Organizations userOrgs={userOrgs} setUserOrgs={setUserOrgs} pendingRequests={pendingRequests} setPendingRequests={setPendingRequests} pendingMembers={pendingMembers} setPendingMembers={setPendingMembers} />} />
+          <Route path="/organizations" element={<Organizations userOrgs={userOrgs} setUserOrgs={setUserOrgs} selectedOrg={selectedOrg} setSelectedOrg={setSelectedOrg} pendingRequests={pendingRequests} setPendingRequests={setPendingRequests} pendingMembers={pendingMembers} setPendingMembers={setPendingMembers} />} />
           <Route path="/intro" element={<Navigate to="/" />} />
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path="/register" element={<Navigate to="/" />} />

@@ -5,7 +5,7 @@ import { showToast } from "../utils/toast";
 import { api } from "../api";
 import type { Org, PendingMember } from "../types";
 
-const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs, setPendingRequests, setPendingMembers }: { userOrgs: Org[], pendingRequests: Org[], pendingMembers: PendingMember[], setUserOrgs: (userOrgs: Org[]) => void, setPendingRequests: (userOrgs: Org[]) => void, setPendingMembers: (userOrgs: PendingMember[]) => void }) => {
+const Organizations = ({ userOrgs, selectedOrg, pendingRequests, pendingMembers, setUserOrgs, setSelectedOrg, setPendingRequests, setPendingMembers }: { userOrgs: Org[], selectedOrg: number | null, pendingRequests: Org[], pendingMembers: PendingMember[], setUserOrgs: (userOrgs: Org[]) => void, setSelectedOrg: (userOrgs: number | null) => void, setPendingRequests: (userOrgs: Org[]) => void, setPendingMembers: (userOrgs: PendingMember[]) => void }) => {
 
     const navigate = useNavigate();
 
@@ -47,6 +47,14 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
 
         fetchResults();
     }, [searchTerm]);
+
+    const handleOrgSelector = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        if (e.target.value === "") {
+            setSelectedOrg(null)
+        } else {
+            setSelectedOrg(Number(e.target.value))
+        }
+    }
 
     const handleCreate = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -163,6 +171,15 @@ const Organizations = ({ userOrgs, pendingRequests, pendingMembers, setUserOrgs,
                 <Link className="backlink" to="/">&larr; Revenir au bureau</Link>
             </header>
             <hr />
+            {userOrgs.length > 0 && <div className="dash-orga">
+                <div className="orga-select">
+                    <h3>Vos associations :</h3>
+                    <select name="user-orgs" id="userOrgs" value={selectedOrg ?? ""} onChange={handleOrgSelector}>
+                        {userOrgs.map((org, index) => <option key={index} value={org.id}>{org.name}</option>)}
+                    </select>
+                </div>
+                <hr />
+            </div>}
             <h3>Enregistrer une nouvelle association ?</h3>
             <div className="orga-register">
                 <form onSubmit={handleCreate}>
