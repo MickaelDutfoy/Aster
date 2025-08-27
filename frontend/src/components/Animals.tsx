@@ -260,16 +260,16 @@ const Animals = ({ userOrgs, selectedOrg, setSelectedOrg }: { userOrgs: Org[], s
                     <div className="animal-vax">
                         <p className="field-title">Vacciné(e) le :</p>
                         <div className="health-date">
-                            <label className="note">Primo ?
-                                <input className="box" type="checkbox" name="primo" checked={animalForm.primo} onChange={(e) => setAnimalForm(f => ({ ...f, primo: e.target.checked }))} /></label>
+                            <p className="note">Primo ?</p>
+                            <input className="box" type="checkbox" name="primo" checked={animalForm.primo} onChange={(e) => setAnimalForm(f => ({ ...f, primo: e.target.checked }))} />
                             <input className="field" type="date" name="vax" value={animalForm.vax} onChange={handleAnimalChange} />
                         </div>
                     </div>
                     <div className="animal-deworm">
                         <p className="field-title">Déparasité(e) le :</p>
                         <div className="health-date">
-                            <label className="note">Premier ?
-                                <input className="box" type="checkbox" name="prime" checked={animalForm.prime} onChange={(e) => setAnimalForm(f => ({ ...f, prime: e.target.checked }))} /></label>
+                            <p className="note">Premier ?</p>
+                            <input className="box" type="checkbox" name="prime" checked={animalForm.prime} onChange={(e) => setAnimalForm(f => ({ ...f, prime: e.target.checked }))} />
                             <input className="field" type="date" name="deworm" value={animalForm.deworm} onChange={handleAnimalChange} />
                         </div>
                     </div>
